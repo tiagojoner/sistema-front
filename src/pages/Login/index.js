@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import api from '../../services/api';
-// import Teste from './teste';
+//import Teste from './teste';
 
 export default function Login({ history }) {
 
-    const [user, setUser] = useState('');
-    const [pass, setPass] = useState('');
+    const [login, setUser] = useState('');
+    const [senha, setPass] = useState('');
 
     async function handleSubmit(event) {
         event.preventDefault(); // não da refres na tela
 
-        const response = await api.post('/auth', { user, pass })
+        const response = await api.post('/auth', { login, senha })
 
         const { token } = response.data;
 
@@ -18,8 +18,8 @@ export default function Login({ history }) {
 
         localStorage.setItem('token', token); //guarda token na storage do browser.
 
-        //history.push(Teste);
-        console.log(token);
+        history.push('teste.js');
+        //console.log(token);
 
     }
 
@@ -34,7 +34,7 @@ export default function Login({ history }) {
                     type="text"
                     name="user"
                     placeholder="Usuário"
-                    value={user}
+                    value={login}
                     onChange={event => setUser(event.target.value)}
                 />
                 <label htmlFor="pass">Senha</label>
@@ -42,7 +42,7 @@ export default function Login({ history }) {
                     type="text"
                     name="pass"
                     placeholder="Senha"
-                    value={pass}
+                    value={senha}
                     onChange={event => setPass(event.target.value)}
                 />
                 <button className="btn" type="submit">
