@@ -18,7 +18,7 @@ export default function Login({ history }) {
 
         localStorage.setItem('token', token); //guarda token na storage do browser.
 
-        history.push('teste.js');
+        history.push('./Perfil');
         //console.log(token);
 
     }

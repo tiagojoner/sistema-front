@@ -1,15 +1,26 @@
-// 1- pacote para conectar com api/services já instala o node_modules
+// 1 - Instalar nodeJS
+https://nodejs.org/en/download/
+
+// 2 - Install yarn
+https://yarnpkg.com/lang/en/docs/install/#windows-stable
+
+// 3 - Pacote para conectar com api/services já instala o node_modules
 yarn add axios 
 
-// 2- pacote de dependencias
+// 4- Pacote de dependencias
 yarn add react-router-dom
 
-// 3- pacote de dependencias do expo
+// 5 - Pacote para usar navegação entre telas
+yarn add react-navigation 
+
+// 6 - Install expo cli
+npm install -g expo-cli
+
+// 7 - Pacote de dependencias do expo
 expo install react-native-gesture-handler react-native-reanimated
 
-yarn add react-navigation //pacote para usar navegação entre telas
-
-yarn start // inicia aplicação
+// 8 - Iniciar aplicação
+yarn start 
 
 //frontend é o nome da pasta que será criado o projeto web
 //este comando nao rodar
