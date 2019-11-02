@@ -14,7 +14,7 @@ export default function Routes() {
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/new" component={New} />                
                 <Route path="/perfil" component={Perfil} />                
-
+                <Route path="/*" component='Página não encontrada' />                
             </Switch>       
         
         </BrowserRouter>

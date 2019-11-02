@@ -9,9 +9,13 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function loadSpots() {
-            const user_id = localStorage.getItem('token');
+            const Authorization = 'Bearer ' + localStorage.getItem('token');
             const response = await api.get('/perfil', {
-                headers: { user_id }
+                headers: {
+                    'Accept': 'Application/json',    
+                     Authorization,
+                    'Content-Type': 'Application/json'
+                }
             });
 
             setSpots(response.data);
@@ -21,20 +25,22 @@ export default function Dashboard() {
 
     return (
         <>
+          
             <ul className="spot-list">
 
                 {spots.map(spot => (
-                    <li key={spot._id}>
-                        <header style={{ backgroundImage: `url(${spot.thumbnail_url})` }}></header>
-                        <strong>{spot.company}: </strong>
-                        <span>{spot.price ? `R$ ${spot.price}/dia` : `GRATUITO`}</span>
+                    <li key={spot.id}>
+
+                        <strong>{spot.nome}: </strong>
+                        
                     </li>
                 ))}
 
             </ul>
-        <Link to="/new">
-            <button className="btn">Cadastrar novo spot</button>
-        </Link>
+            <Link to="/new">
+                <button className="btn">Cadastrar novo spot</button>
+            </Link>
+            
         </>
     )
 }

@@ -1,27 +1,34 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState} from 'react';
 import './styles.css';
-import camera from '../../assets/camera.svg';
+
 import api from '../../services/api';
 
 export default function New({history}) {
 
     const [nome, setNome] = useState('');
-    const id = useState(0);
-    const idUsuarioAtualizacao = useState(0);
+    const id = 0;
+    const idUsuarioAtualizacao = 0;
         
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const data = new FormData();
-        const token = localStorage.getItem('token');
+        var data;
+        const Authorization = 'Bearer ' + localStorage.getItem('token');
 
-        data.append('id', id);
-        data.append('idUsuarioAtualizacao', idUsuarioAtualizacao);
-        data.append('nome', nome);
+        data = {
+            id: id,
+            idUsuarioAtualizacao: idUsuarioAtualizacao,
+            nome: nome
+        }
         
+        JSON.stringify(data);
 
         await api.post('/perfil', data, {
-            headers: {token}
+            headers: {
+                'Accept': 'Application/json',    
+                Authorization,
+                'Content-Type': 'Application/json'
+            }
         })
 
         history.push('/dashboard');
